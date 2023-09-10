@@ -1,8 +1,13 @@
 package com.helloSpring.Controller;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -10,7 +15,40 @@ public class HelloController {
     public String Hello(Model model) //
     {
         model.addAttribute("data", "Hello!!!!");
+        // attributeValue에 뭔가 DB에서 데이터를 조회해와서 필요한 데이터를 표시할 수 있다!
         return "hello";
+    }
+
+    @GetMapping("/hello-mvc")
+    public String helloMvc(@RequestParam(name = "name") String name, Model model) //
+    {
+        model.addAttribute("name", name);
+        // attributeValue에 뭔가 DB에서 데이터를 조회해와서 필요한 데이터를 표시할 수 있다!
+        return "hello-template";
+    }
+
+    @GetMapping("/hello-string")
+    @ResponseBody
+    public String helloString(@RequestParam(name = "name") String name) //
+    {
+
+        return "hello-template " + name;
+    }
+
+    @NoArgsConstructor
+    @Getter
+    @Setter
+    static class Hello{
+        private String name;
+    }
+
+    @GetMapping("/hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam(name = "name") String name)
+    {
+        Hello hello = new Hello();
+        hello.setName("s");
+        return hello;
     }
 }
 /*
