@@ -26,9 +26,10 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("members")
-    public String scanMembers(Model model){
-
-        return "membersPage";
+    public String list(Model model){
+        List<Member> memberList = memberService.findAllMembers();
+        model.addAttribute("members", memberList);
+        return "members/memberList";
     }
 
     @GetMapping("members/new")
@@ -49,12 +50,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("members/memberList")
-    public String list(Model model){
-        List<Member> memberList = memberService.findAllMembers();
-        model.addAttribute("members", memberList);
-        return "members/memberList";
-    }
+
 
 
 }

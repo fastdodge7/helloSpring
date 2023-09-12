@@ -5,11 +5,13 @@ import com.helloSpring.Repository.MemberRepository;
 import com.helloSpring.Repository.MemoryMemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Transactional
 public class MemberService {
     // MemberRepository라는 클래스의 의존하고있는데, 이를 생성자를 통해 주입받는다. Dependency Injection.
     // 단, 아직은 스프링에서 직접 주입해 주는 것이 아니므로, 스프링에 의한 DI는 아니다.

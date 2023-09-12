@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>이름</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="member : ${members}"> <!-- 이건 반복문 같은 거임. members라는 리스트에서 member를 하나씩 꺼내 아래 코드를 실행한다는 것.-->
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
