@@ -15,16 +15,18 @@ import javax.sql.DataSource;
 @Configuration
 @RequiredArgsConstructor
 public class SpringConfig {
-    private final DataSource dataSource;
-    private final EntityManager em;
+//    private final DataSource dataSource;
+//    private final EntityManager em;
+
+    private final MemberRepository memberRepository;
 
     @Bean
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository(){
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository(){
+//        return new JpaMemberRepository(em);
+//    }
 }

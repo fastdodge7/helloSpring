@@ -44,8 +44,4 @@ public class JpaMemberRepository implements MemberRepository {
         return memberList;
     }
 
-    @Override
-    public void clearStore() {
-
-    }
 }
